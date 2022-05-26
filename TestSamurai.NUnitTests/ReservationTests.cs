@@ -5,13 +5,17 @@ namespace TestSamurai.NUnitTests
     [TestFixture]
     public class ReservationTests
     {
+        private Reservation _reservation;
+
+        [SetUp]
+        public void SetUp() => _reservation = new Reservation();
+
         [Test]
         public void CanBeCancelledBy_Admin_ReturnsTrue()
         {
-            var reservation = new Reservation();
             var admin = new User { IsAdmin = true };
 
-            var canBeCancelledByAdmin = reservation.CanBeCancelledBy(admin);
+            var canBeCancelledByAdmin = _reservation.CanBeCancelledBy(admin);
 
             Assert.That(canBeCancelledByAdmin, Is.True);
         }
@@ -19,12 +23,11 @@ namespace TestSamurai.NUnitTests
         [Test]
         public void CanBeCancelledBy_MakerUser_ReturnsTrue()
         {
-            var reservation = new Reservation();
             var user = new User { IsAdmin = true };
 
-            reservation.MadeBy = user;
+            _reservation.MadeBy = user;
 
-            var canBeCancelledByMakerUser = reservation.CanBeCancelledBy(user);
+            var canBeCancelledByMakerUser = _reservation.CanBeCancelledBy(user);
 
             Assert.That(canBeCancelledByMakerUser, Is.True);
         }
@@ -32,12 +35,37 @@ namespace TestSamurai.NUnitTests
         [Test]
         public void CanBeCancelledBy_RegularUser_ReturnsFalse()
         {
-            var reservation = new Reservation();
             var user = new User { IsAdmin = false };
 
-            var canBeCancelledByRegularUser = reservation.CanBeCancelledBy(user);
+            var canBeCancelledByRegularUser = _reservation.CanBeCancelledBy(user);
 
             Assert.That(canBeCancelledByRegularUser, Is.False);
+        }
+    }
+
+    public class ReservationTestsUsingTestCases
+    {
+        private Reservation _reservation;
+
+        [SetUp]
+        public void SetUp() => _reservation = new Reservation();
+
+        [Test]
+        [TestCase(true, true, true)]
+        [TestCase(true, false, true)]
+        [TestCase(false, true, true)]
+        [TestCase(false, false, false)]
+        public void CanBeCancelledByUser(bool isAdmin, bool isMaker, bool expectedResult)
+        {
+            var user = new User { IsAdmin = isAdmin };
+            if (isMaker)
+                _reservation.MadeBy = user;
+            else
+                _reservation.MadeBy = new User();
+
+            var canBeCancelledByUser = _reservation.CanBeCancelledBy(user);
+
+            Assert.That(canBeCancelledByUser, Is.EqualTo(expectedResult));
         }
     }
 }
