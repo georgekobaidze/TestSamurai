@@ -58,10 +58,7 @@ namespace TestSamurai.NUnitTests
         public void CanBeCancelledByUser(bool isAdmin, bool isMaker, bool expectedResult)
         {
             var user = new User { IsAdmin = isAdmin };
-            if (isMaker)
-                _reservation.MadeBy = user;
-            else
-                _reservation.MadeBy = new User();
+            _reservation.MadeBy = isMaker ? user : new User();
 
             var canBeCancelledByUser = _reservation.CanBeCancelledBy(user);
 
