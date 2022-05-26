@@ -33,6 +33,7 @@ namespace TestSamurai.NUnitTests
         }
 
         [Test]
+        [Ignore("Why not?")]
         public void CanBeCancelledBy_RegularUser_ReturnsFalse()
         {
             var user = new User { IsAdmin = false };
