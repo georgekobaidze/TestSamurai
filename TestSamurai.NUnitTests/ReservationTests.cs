@@ -56,7 +56,7 @@ namespace TestSamurai.NUnitTests
         [TestCase(true, false, true)]
         [TestCase(false, true, true)]
         [TestCase(false, false, false)]
-        public void CanBeCancelledByUser(bool isAdmin, bool isMaker, bool expectedResult)
+        public void CanBeCancelledBy_WhenCalled_ShouldReturnExpectedResult(bool isAdmin, bool isMaker, bool expectedResult)
         {
             var user = new User { IsAdmin = isAdmin };
             _reservation.MadeBy = isMaker ? user : new User();
