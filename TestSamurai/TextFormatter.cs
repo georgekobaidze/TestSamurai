@@ -1,5 +1,11 @@
 ﻿namespace TestSamurai;
 public class TextFormatter
 {
-    public string MakeBold(string text) => $"<strong>{text}</strong>";
+    public string MakeBold(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            throw new ArgumentNullException(nameof(text));
+
+        return $"<strong>{text}</strong>";
+    } 
 }

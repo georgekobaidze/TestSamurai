@@ -5,6 +5,11 @@ namespace TestSamurai.NUnitTests;
 [TestFixture]
 public class TextFormatterTests
 {
+    private TextFormatter _formatter;
+
+    [SetUp]
+    public void SetUp() => _formatter = new TextFormatter();
+
     [Test]
     public void MakeBold_WhenCalled_ShouldEncloseTheStringWithStrongElement()
     {
@@ -19,4 +24,11 @@ public class TextFormatterTests
         Assert.That(result, Does.EndWith("</strong>"));
         Assert.That(result, Does.Contain("Test"));
     }
+
+    [Test]
+    [TestCase(null)]
+    [TestCase("")]
+    [TestCase(" ")]
+    public void MakeBold_InvalidError_ThrowArgumentNullException(string text) 
+        => Assert.That(() => _formatter.MakeBold(text), Throws.ArgumentNullException);
 }
