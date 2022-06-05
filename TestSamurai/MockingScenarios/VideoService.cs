@@ -6,7 +6,7 @@ public class VideoService
 {
     private readonly IFileReader _fileReader;
 
-    public VideoService(IFileReader fileReader) => _fileReader = fileReader;
+    public VideoService(IFileReader fileReader = null) => _fileReader = fileReader ?? new FileReader();
 
     public string ReadVideoTitleWithoutLooseCoupling()
     {
