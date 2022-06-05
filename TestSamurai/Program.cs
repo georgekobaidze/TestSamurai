@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using TestSamurai.MockingScenarios;
+
+var videoService = new VideoService(new FileReader());
+var title = videoService.ReadVideoTitle();
+
+Console.WriteLine(title);
