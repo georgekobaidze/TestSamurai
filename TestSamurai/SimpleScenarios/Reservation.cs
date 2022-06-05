@@ -1,4 +1,5 @@
-﻿namespace TestSamurai;
+﻿namespace TestSamurai.SimpleScenarios;
+
 public class Reservation
 {
     public User MadeBy { get; set; }

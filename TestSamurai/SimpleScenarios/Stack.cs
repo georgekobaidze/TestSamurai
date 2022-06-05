@@ -1,4 +1,5 @@
-﻿namespace TestSamurai;
+﻿namespace TestSamurai.SimpleScenarios;
+
 public class Stack<T>
 {
     private readonly List<T> _list = new();

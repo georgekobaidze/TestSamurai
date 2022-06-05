@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestSamurai.SimpleScenarios;
 
 namespace TestSamurai.MSUnitTests;
 

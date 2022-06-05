@@ -1,7 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
+using TestSamurai.SimpleScenarios;
 
-namespace TestSamurai.NUnitTests;
+namespace TestSamurai.NUnitTests.SimpleScenarios;
 
 [TestFixture]
 public class StackTests
@@ -19,7 +20,7 @@ public class StackTests
     }
 
     [Test]
-    public void Push_ItemIsNullStackIsEmpty_ThrowsArgumentNullException() 
+    public void Push_ItemIsNullStackIsEmpty_ThrowsArgumentNullException()
         => Assert.Throws<ArgumentNullException>(() => _stack.Push(null));
 
     [Test]
@@ -45,7 +46,7 @@ public class StackTests
     }
 
     [Test]
-    public void Pop_StackIsEmpty_ThrowInvalidOperationException() 
+    public void Pop_StackIsEmpty_ThrowInvalidOperationException()
         => Assert.Throws<InvalidOperationException>(() => _stack.Pop());
 
     [Test]

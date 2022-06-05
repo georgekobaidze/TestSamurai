@@ -1,4 +1,5 @@
-﻿namespace TestSamurai;
+﻿namespace TestSamurai.SimpleScenarios;
+
 public class TextFormatter
 {
     public string MakeBold(string text)
@@ -7,5 +8,5 @@ public class TextFormatter
             throw new ArgumentNullException(nameof(text));
 
         return $"<strong>{text}</strong>";
-    } 
+    }
 }

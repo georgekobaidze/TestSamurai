@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
+using TestSamurai.SimpleScenarios;
 
-namespace TestSamurai.NUnitTests;
+namespace TestSamurai.NUnitTests.SimpleScenarios;
 
 [TestFixture]
 public class FizzBuzzTests

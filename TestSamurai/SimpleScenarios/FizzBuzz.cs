@@ -1,4 +1,5 @@
-﻿namespace TestSamurai;
+﻿namespace TestSamurai.SimpleScenarios;
+
 public class FizzBuzz
 {
     public static string GetOutput(int number)

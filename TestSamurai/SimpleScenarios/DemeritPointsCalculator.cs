@@ -1,4 +1,4 @@
-﻿namespace TestSamurai;
+﻿namespace TestSamurai.SimpleScenarios;
 
 public class DemeritPointsCalculator
 {
