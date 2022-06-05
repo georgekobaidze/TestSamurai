@@ -1,0 +1,34 @@
+﻿namespace TestSamurai;
+public class Stack<T>
+{
+    private readonly List<T> _list = new();
+
+    public int Count => _list.Count;
+
+    public void Push(T? item)
+    {
+        if (item == null)
+            throw new ArgumentNullException(nameof(item));
+
+        _list.Add(item);
+    }
+
+    public T Pop()
+    {
+        if (_list.Count == 0)
+            throw new InvalidOperationException();
+
+        var item = _list[_list.Count - 1];
+        _list.RemoveAt(_list.Count - 1);
+
+        return item;
+    }
+
+    public T Peek()
+    {
+        if (_list.Count == 0)
+            throw new InvalidOperationException();
+
+        return _list[_list.Count - 1];
+    }
+}
