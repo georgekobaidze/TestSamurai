@@ -1,8 +1,9 @@
 ﻿using Moq;
 using NUnit.Framework;
-using TestSamurai.MockingScenarios;
+using TestSamurai.MockingScenarios.Files;
+using TestSamurai.MockingScenarios.Videos;
 
-namespace TestSamurai.NUnitTests.MockingScenarios;
+namespace TestSamurai.NUnitTests.MockingScenarios.Videos;
 
 [TestFixture]
 public class VideoServiceTests

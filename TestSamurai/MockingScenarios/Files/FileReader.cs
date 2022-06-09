@@ -1,4 +1,4 @@
-﻿namespace TestSamurai.MockingScenarios;
+﻿namespace TestSamurai.MockingScenarios.Files;
 
 public class FileReader : IFileReader
 {
