@@ -6,8 +6,16 @@ namespace TestSamurai.MockingScenarios.Videos;
 public class VideoService
 {
     private readonly IFileReader _fileReader;
+    private readonly IVideoContext _videoContext;
 
-    public VideoService(IFileReader fileReader = null) => _fileReader = fileReader ?? new FileReader();
+    public VideoService(
+        IFileReader? fileReader = null,
+        IVideoContext? videoContext = null)
+    {
+        _fileReader = fileReader ?? new FileReader();
+        _videoContext = videoContext ?? new VideoContext();
+    }
+    
 
     public string ReadVideoTitleWithoutLooseCoupling()
     {
@@ -31,8 +39,7 @@ public class VideoService
 
     public string GetUnprocessedVideoAsCsv()
     {
-        var context = new VideoContext();
-        var videoIds = context.Videos.Where(x => !x.IsProcessed).Select(x => x.Id);
+        var videoIds = _videoContext.Videos.Where(x => !x.IsProcessed).Select(x => x.Id);
 
         return string.Join(", ", videoIds);
     }

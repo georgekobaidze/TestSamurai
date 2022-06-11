@@ -1,5 +1,5 @@
 ﻿namespace TestSamurai.MockingScenarios.Videos.Context;
-public class VideoContext
+public class VideoContext : IVideoContext
 {
     public List<Video> Videos
     {
