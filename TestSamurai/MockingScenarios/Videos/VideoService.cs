@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using TestSamurai.MockingScenarios.Files;
+using TestSamurai.MockingScenarios.Videos.Context;
 
 namespace TestSamurai.MockingScenarios.Videos;
 public class VideoService
@@ -34,36 +35,5 @@ public class VideoService
         var videoIds = context.Videos.Where(x => !x.IsProcessed).Select(x => x.Id);
 
         return string.Join(", ", videoIds);
-    }
-}
-
-public class Video
-{
-    [JsonProperty(PropertyName = "id")]
-    public int Id { get; set; }
-
-    [JsonProperty(PropertyName = "title")]
-    public string Title { get; set; }
-
-    [JsonProperty(PropertyName = "isProcessed")]
-    public bool IsProcessed { get; set; }
-}
-
-public class VideoContext
-{
-    public List<Video> Videos
-    {
-        get
-        {
-            return new List<Video>
-            {
-                new Video { Id = 1, IsProcessed = true, Title = "Video1" },
-                new Video { Id = 2, IsProcessed = true, Title = "Video2" },
-                new Video { Id = 3, IsProcessed = false, Title = "Video3" },
-                new Video { Id = 4, IsProcessed = true, Title = "Video4" },
-                new Video { Id = 5, IsProcessed = true, Title = "Video5" },
-                new Video { Id = 6, IsProcessed = false, Title = "Video6" }
-            };
-        }
     }
 }
